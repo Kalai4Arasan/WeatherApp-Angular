@@ -1,0 +1,13 @@
+<nav [@simpleFadeAnimation]="'in'" class="navbar navbar-expand-lg sticky-top " [ngStyle]="{'background-color':'rgb(248, 210, 170)','border-radius':'10px'}">
+    <a class="navbar-brand center" routerLink="/Home">
+        <h4 class=" text-center"><img src="assets/Images/logo.png" width="40" height="40" class="d-inline-block align-top" alt="">
+      Weather.io</h4>
+    </a>
+  </nav>
+<ul class="list-group list-group-horizontal mt-2 mb-0 ">
+  <li class="list-group-item link" ><a routerLinkActive="active-link" routerLink="/Home">Home</a></li>
+  <li class="list-group-item link" ><a routerLinkActive="active-link" routerLink="/CustomWeather">CustomWeather</a></li>
+  <li class="list-group-item link" ><a routerLinkActive="active-link" routerLink="/About">About</a></li>
+</ul>
+<hr>
+

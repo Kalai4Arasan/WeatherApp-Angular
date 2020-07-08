@@ -1,0 +1,15 @@
+export interface DataModel{
+    coord: any,
+    weather: any,
+    base: string,
+    main:any,
+    visibility:Int16Array,
+    wind:any,
+    clouds:any,
+    dt:Int16Array,
+    sys:any,
+    timezone:Int16Array,
+    id:Int16Array,
+    name:string,
+    cod:Int16Array,
+}

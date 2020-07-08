@@ -1,0 +1,16 @@
+.active-link{
+    text-decoration: underline;
+    color:purple;
+}
+
+.link{
+    border: 1px solid white;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  

@@ -1,0 +1,51 @@
+<div [@simpleFadeAnimation]="'in'" class="card">
+    <div class="card-body">
+        <form class="text-center " #form="ngForm" (ngSubmit)="sendData()" >
+            <div class="form-group">
+                <label for="place"></label>
+                <input [(ngModel)]="city" #val="ngModel" [class.is-invalid]="val.invalid && val.touched" name="city" type="text" class="form-control form-input" placeholder="Enter Your City. Example: TamilNadu,Salem" required>
+                <span [class.d-none]="val.valid || val.untouched" class="text-danger">This field must be required</span>
+            </div>
+            <input type="submit" [class.disabled]="val.invalid && val.touched"  class="btn btn-sm btn-success ml-2"  value="Get Weather">
+        </form>
+    </div>
+</div>
+
+<div [@simpleFadeAnimation]="'in'" *ngIf="(data | json)?.length >0 && data['cod']==200;else ElseBlock;" class="card mt-4">
+    <h3 class="card-title text-center mt-2">Weather Details:</h3>
+    <div class="card-body">
+        <table class="table table-light text-center">
+            <tr>
+                <td></td>
+                <td>
+                    <img class="imgColor" src={{imgurl}} height=100 width=100 alt="">
+                    <legend> {{data['weather'][0]['main']}} <br> {{data['weather'][0]["description"]}}</legend>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Place</td><td>:</td><td>{{data['name']}}</td>
+            </tr>
+            <tr>
+               <td> Coordinates </td> <td>:</td> <td>{{data['coord']['lon']}},{{data['coord']['lat']}}</td>
+            </tr>
+           
+            <tr>
+                <td>Base</td><td>:</td><td>{{data['base']}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><legend> Main Details : </legend></td>
+                <td></td>
+            </tr>
+            <tr *ngFor="let item of data['main'] | keyvalue">
+                <td>{{item.key}}</td>
+                <td>:</td>
+                <td >{{item.value}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<ng-template #ElseBlock>
+    <img *ngIf="data['cod']==404"  class="center" src="assets/Images/NoDataFound.png" alt="">
+</ng-template>
